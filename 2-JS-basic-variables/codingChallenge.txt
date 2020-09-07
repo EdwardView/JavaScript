@@ -1,0 +1,131 @@
+/***********************
+* First Coding Challenge
+*/
+
+var massJohn = prompt("Enter the Mass of John : ");
+var heightJohn = prompt("Enter the Heigth of John(in CM)");
+var bmiJohn = massJohn / (heightJohn*heightJohn);
+
+alert("BMI of John is "+bmiJohn);
+
+var massMark = prompt("Enter the Mass of Mark(in KG) : ");
+var heightMark = prompt("Enter the Heigth of Mark(in CM)");
+var bmiMark = massMark / (heightMark*heightMark);
+
+alert("BMI of John is "+bmiMark);
+
+if(bmiJohn > bmiMark)
+	alert("BMI of John is Greater then Mark");
+else	
+	alert("BMI of Mark is Greater then John");
+
+// CODING CHALLENGE 3
+
+function tipsCalculator(bill){
+	if(bill >= 200)
+		return (0.1*bill);
+	else if (bill >= 50 && bill < 200)
+		return (0.15*bill);
+	else
+		return (0.2*bill);
+}
+
+var restaurantsBils = [124,48,268];
+var bills = [tipsCalculator(restaurantsBils[0]),tipsCalculator(restaurantsBils[1]),tipsCalculator(restaurantsBils[2])]
+console.log(restaurantsBils,bills);
+
+
+// Coding Challenge
+
+var johnBmi = {
+	fullName : 'John Smith',
+	mass : prompt("Entre the Mass of john(in kg) : "),
+	height: prompt("Enter the Height of john(in meter) "),
+	calBMI : function(){
+		this.bmiValue = this.mass / (this.height*this.height);
+	}
+};
+
+var markBmi = {
+	fullName : 'Mark Smith',
+	mass : prompt("Entre the Mass of Mark(in kg) : "),
+	height: prompt("Enter the Height of Mark(in meter) "),
+	calBMI : function(){
+		this.bmiValue = this.mass / (this.height*this.height);
+	}
+};
+johnBmi.calBMI();
+markBmi.calBMI()
+console.log(johnBmi.fullName+" BMI is "+johnBmi.bmiValue);
+console.log(markBmi.fullName+" BMI is "+markBmi.bmiValue);
+
+if(johnBmi.bmiValue > markBmi.bmiValue)
+		console.log(johnBmi.fullName+" has heighest BMI with "+ johnBmi.bmiValue);
+	else
+		console.log(markBmi.fullName+" has heighest BMI with "+ markBmi.bmiValue);
+
+
+
+// 5. Coding Challenge
+
+var billsJohn = {
+	restaurantsBills : [124,48,268,180,42],
+	tipsbills : [],
+	finalBillPaid : [],
+	tipsCalculator: function(){
+		for(var i=0; i<this.restaurantsBills.length; i++){
+			if(this.restaurantsBills[i] >= 200){
+				this.tipsbills[i] = 0.1*this.restaurantsBills[i];
+			}
+			else if(this.restaurantsBills[i] >= 50 && this.restaurantsBills[i] < 200){
+				this.tipsbills[i] = 0.15*this.restaurantsBills[i];
+			}
+			else{
+				this.tipsbills[i] = 0.2*this.restaurantsBills[i];
+			}
+			this.finalBillPaid[i] = this.restaurantsBills[i] + this.tipsbills[i]
+		}
+	}
+};
+billsJohn.tipsCalculator();
+console.log(billsJohn.restaurantsBills,billsJohn.tipsbills,billsJohn.finalBillPaid);
+
+
+var billsMark = {
+	restaurantsBills : [77,375,110,45],
+	tipsbills : [],
+	finalBillPaid : [],
+	tipsCalculator: function(){
+		for(var i=0; i<this.restaurantsBills.length; i++){
+			if(this.restaurantsBills[i] >= 300){
+				this.tipsbills[i] = 0.25*this.restaurantsBills[i];
+			}
+			else if(this.restaurantsBills[i] >= 100 && this.restaurantsBills[i] < 300){
+				this.tipsbills[i] = 0.1*this.restaurantsBills[i];
+			}
+			else{
+				this.tipsbills[i] = 0.2*this.restaurantsBills[i];
+			}
+			this.finalBillPaid[i] = this.restaurantsBills[i] + this.tipsbills[i]
+		}
+	}
+};
+billsMark.tipsCalculator();
+console.log(billsMark.restaurantsBills,billsMark.tipsbills,billsMark.finalBillPaid);
+function avergeTips(tip){
+	var avg=0;
+	for(var i=0; i<tip.length; i++){
+		avg += tip[i];
+	}
+	return avg/tip.length;
+}
+
+var johnAvgTip = avergeTips(billsJohn.tipsbills);
+var markAvgTip = avergeTips(billsMark.tipsbills);
+
+if(johnAvgTip > markAvgTip)
+	console.log("John Family Paid Heighest Tips.");
+else
+	console.log("Mark Family Paid Heighest Tips.");
+
+
